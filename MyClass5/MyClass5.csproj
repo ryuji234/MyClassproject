@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Minegame.cs" />
     <Compile Remove="Program.cs" />
+    <Compile Remove="TicTacTOe.cs" />
   </ItemGroup>
 
 </Project>

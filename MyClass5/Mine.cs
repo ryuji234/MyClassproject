@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyClass5
 {
-    internal class Minegame
-    {
-        /**
+    internal class Mine
+    {/**
              * 지뢰 찾기 
              * 10*10 보드에 지뢰를 숨김(N%확률로 지뢰 매설)
              * debug mode 에서 지뢰가 아닛 곳은 .(닷), 지뢰인 곳은 #(샵)으로 표현
@@ -18,7 +16,7 @@ namespace MyClass5
              * */
         public static void Main()
         {
-            Random randomMine= new Random();
+            Random randomMine = new Random();
             const int MINE_PERCETAGE = 30;
             const int BOARD_SIZE_X = 5;
             const int BOARD_SIZE_Y = 5;
@@ -47,15 +45,15 @@ namespace MyClass5
             int[,] gameBoard = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
             int[,] playBoard = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
             int[,] mineCntMap = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
-            for(int y = 0; y <BOARD_SIZE_Y;y++ )
+            for (int y = 0; y < BOARD_SIZE_Y; y++)
             {
-                for(int x = 0; x<BOARD_SIZE_X;x++)
+                for (int x = 0; x < BOARD_SIZE_X; x++)
                 {
-                    gameBoard[y,x] = randomMine.Next(1,100);
+                    gameBoard[y, x] = randomMine.Next(1, 100);
                     playBoard[y, x] = -1;
-                    if (gameBoard[y,x] < MINE_PERCETAGE)
+                    if (gameBoard[y, x] < MINE_PERCETAGE)
                     {
-                        mineCntMap[y,x] = -1;
+                        mineCntMap[y, x] = -1;
                     }   // if: 지뢰가 셋업된 경우
                     else
                     {
@@ -66,14 +64,14 @@ namespace MyClass5
 
             // 게임 시작
 
-            while(isGameOver == false)
+            while (isGameOver == false)
             {
                 //{ 현제 보드의 상태를 플레이 시점으로 보여준다.
-                for(int y = 0; y < BOARD_SIZE_Y;y++)
+                for (int y = 0; y < BOARD_SIZE_Y; y++)
                 {
-                    for(int x = 0; x<BOARD_SIZE_X;x++)
+                    for (int x = 0; x < BOARD_SIZE_X; x++)
                     {
-                        switch(playBoard[y,x]) 
+                        switch (playBoard[y, x])
                         {
                             case -2:
                                 Console.Write("X".PadRight(3, ' '));
@@ -87,7 +85,7 @@ namespace MyClass5
                             default:
                                 Console.Write("{0}".PadRight(5, ' '), playBoard[y, x]);
                                 break;
-                                
+
                         }   // switch
                     }   //loop
                     Console.WriteLine();
@@ -99,7 +97,7 @@ namespace MyClass5
                 int PlayerY = 0;
                 bool isLocationVaild = false;
                 //  {플레이어 좌표 입력
-                while(isLocationVaild == false)
+                while (isLocationVaild == false)
                 {
                     Console.Write("[플레이어] x 좌표 입력: ");
                     int.TryParse(Console.ReadLine(), out PlayerX);
@@ -108,9 +106,9 @@ namespace MyClass5
 
                     // 플레이어가 입력한 좌표의 유효성을 검사한다.
                     isLocationVaild =
-                        ( 0 <= PlayerX && PlayerX <BOARD_SIZE_X)&&
-                        (0 <=PlayerY&& PlayerY <BOARD_SIZE_Y);
-                    if(isLocationVaild == false)
+                        (0 <= PlayerX && PlayerX < BOARD_SIZE_X) &&
+                        (0 <= PlayerY && PlayerY < BOARD_SIZE_Y);
+                    if (isLocationVaild == false)
                     {
                         Console.WriteLine("{0} {1}", "[System] 해당 좌표는 유효하지 않습니다.",
                             "다른 좌표를 입력하세요 \n");
@@ -121,7 +119,7 @@ namespace MyClass5
 
                     // 플레이 보드에서 선택 가능한지 검사한다.
                     isLocationVaild = isLocationVaild && playBoard[PlayerY, PlayerX].Equals(-1);
-                    if(isLocationVaild == false)
+                    if (isLocationVaild == false)
                     {
                         Console.WriteLine("{0} {1}", "[System] 해당 좌표는 이미 오픈되어있습니다.",
                             "다른 좌표를 입력하세요. \n");
@@ -134,32 +132,32 @@ namespace MyClass5
                 //  }플레이어 좌표 입력
 
                 // 현제 첫 턴이라면 해당 좌표에 지뢰가 있어도 지워준다.
-                if(playerTurnCnt.Equals(1))
+                if (playerTurnCnt.Equals(1))
                 {
                     gameBoard[PlayerY, PlayerX] = MINE_PERCETAGE + 1;
                     mineCntMap[PlayerY, PlayerX] = 0;
                     playBoard[PlayerY, PlayerX] = -1;
 
                     // { 지뢰의 수를 세어 지도를 생성한다.
-                    for(int y= 0; y<BOARD_SIZE_Y;y++)
+                    for (int y = 0; y < BOARD_SIZE_Y; y++)
                     {
-                        for(int x = 0; x< BOARD_SIZE_X;x++)
+                        for (int x = 0; x < BOARD_SIZE_X; x++)
                         {
                             //지뢰가 없는 곳은 넘어간다.
-                            if (mineCntMap[y,x].Equals(-1) == false) { continue; }
+                            if (mineCntMap[y, x].Equals(-1) == false) { continue; }
 
                             //지뢰가 주변 9타일에 수를 1씩 추가한다.
                             bool isSearchTileValid = false;
-                            for(int searchY = y -1; searchY <=y+1;searchY++)
+                            for (int searchY = y - 1; searchY <= y + 1; searchY++)
                             {
-                                for(int searchX = x-1;searchX <=x+1;searchX++)
+                                for (int searchX = x - 1; searchX <= x + 1; searchX++)
                                 {
-                                    isSearchTileValid = 
-                                        (0 <= searchX && searchX < BOARD_SIZE_X)&&
+                                    isSearchTileValid =
+                                        (0 <= searchX && searchX < BOARD_SIZE_X) &&
                                         (0 <= searchY && searchY < BOARD_SIZE_Y);
-                                    if(isSearchTileValid == false) { continue; }
+                                    if (isSearchTileValid == false) { continue; }
                                     // 9타일 서치 중에 지뢰가 있다면 패스한다.
-                                    if (mineCntMap[searchY,searchX].Equals(-1)) { continue; }
+                                    if (mineCntMap[searchY, searchX].Equals(-1)) { continue; }
 
                                     mineCntMap[searchY, searchX]++;
                                 }
@@ -174,29 +172,29 @@ namespace MyClass5
                 {
                     isGameOver = true;
                     isPlayerwin = false;
-                    playBoard[PlayerY,PlayerX] = -2;
+                    playBoard[PlayerY, PlayerX] = -2;
                 }       //if: 지뢰를 선택한 경우
                 else
                 {
                     //{ 선택한 파일 인근 9칸에 숫자를 오픈한다
                     bool isSearchtileValid = false;
-                    for( int searchY = PlayerY - 1; searchY <= PlayerY + 1;searchY++)
+                    for (int searchY = PlayerY - 1; searchY <= PlayerY + 1; searchY++)
                     {
-                        for(int searchX = PlayerX - 1;searchX <= PlayerX + 1;searchX++)
+                        for (int searchX = PlayerX - 1; searchX <= PlayerX + 1; searchX++)
                         {
                             // 유효하지 않은 좌표는 패스한다.
                             isSearchtileValid =
                                 (0 <= searchX && searchX < BOARD_SIZE_X) &&
                                 (0 <= searchY && searchY < BOARD_SIZE_Y);
-                            if(isSearchtileValid == false) { continue; }
+                            if (isSearchtileValid == false) { continue; }
 
-                            if (mineCntMap[searchY,searchX].Equals(-1))
+                            if (mineCntMap[searchY, searchX].Equals(-1))
                             {
-                                playBoard[searchY,searchX] = -2;    
+                                playBoard[searchY, searchX] = -2;
                             }       //if: 지뢰인 경우
                             else
                             {
-                                playBoard[searchY, searchX] = mineCntMap[searchY,searchX];
+                                playBoard[searchY, searchX] = mineCntMap[searchY, searchX];
                             }       // else: 지뢰 아닌 경우
                         }
                     }       //loop: 선택한 타일 인근 9칸을 순회하는 루프
@@ -206,27 +204,27 @@ namespace MyClass5
 
                 //{ 게임 승리 조건을 검사한다.
                 int unkownTileCnt = 0;
-                for(int y = 0; y< BOARD_SIZE_Y; y++)
+                for (int y = 0; y < BOARD_SIZE_Y; y++)
                 {
                     // 오픈되지 않은 타일이 있는 경우 게임을 이어서 진행한다.
                     if (0 < unkownTileCnt) { break; }
-                    for (int x =0; x<BOARD_SIZE_X; x++)
+                    for (int x = 0; x < BOARD_SIZE_X; x++)
                     {
                         // 오픈되지 않은 타일이 있는 경우 게임을 이어서 진행한다.
-                        if(0 < unkownTileCnt) { break; }
+                        if (0 < unkownTileCnt) { break; }
 
                         if (playBoard[y, x].Equals(-1) &&
-                            mineCntMap[y,x].Equals(-1) == false)
+                            mineCntMap[y, x].Equals(-1) == false)
                         {
                             unkownTileCnt++;
                         }       //if: 아직 오픈할 타일이 존재하고, 해당 타일이 지뢰가 아닌 경우
                     }
-                    
+
                 }           // loop: 플레이 보드를 순회하는 루프
 
-                if(unkownTileCnt.Equals(0))
+                if (unkownTileCnt.Equals(0))
                 {
-                    isGameOver= true;
+                    isGameOver = true;
                     isPlayerwin = true;
                 }
                 //} 게임 승리 조건을 검사한다.
@@ -235,13 +233,13 @@ namespace MyClass5
                 if (isGameOver) { break; }
                 //} 게임 종료 조건을 검사한다.
 
-                if(isDebugMode)
+                if (isDebugMode)
                 {
                     //{ 현재 보드의 상태를 숫자 지도로 보여준다.
                     Console.WriteLine();
-                    for(int y =0; y< BOARD_SIZE_Y; y++)
+                    for (int y = 0; y < BOARD_SIZE_Y; y++)
                     {
-                        for(int x = 0; x< BOARD_SIZE_X;x++)
+                        for (int x = 0; x < BOARD_SIZE_X; x++)
                         {
                             Console.Write("{0} ", mineCntMap[y, x]);
                         }
@@ -251,11 +249,11 @@ namespace MyClass5
 
                     // { 현재 게임 보드의 상태를 보여준다.
                     Console.WriteLine();
-                    for(int y= 0; y< BOARD_SIZE_Y;y++)
+                    for (int y = 0; y < BOARD_SIZE_Y; y++)
                     {
-                        for(int x = 0; x<BOARD_SIZE_X;x++)
+                        for (int x = 0; x < BOARD_SIZE_X; x++)
                         {
-                            if (gameBoard[y,x] < MINE_PERCETAGE)
+                            if (gameBoard[y, x] < MINE_PERCETAGE)
                             {
                                 Console.Write("# ");
                             }
@@ -273,9 +271,9 @@ namespace MyClass5
 
             // { 현재 보드의 상태를 플레이 시점으로 보여준다.
             Console.WriteLine();
-            for(int y = 0; y < BOARD_SIZE_Y; y++)
+            for (int y = 0; y < BOARD_SIZE_Y; y++)
             {
-                for(int x = 0; x< BOARD_SIZE_X;x++)
+                for (int x = 0; x < BOARD_SIZE_X; x++)
                 {
                     switch (playBoard[y, x])
                     {
@@ -299,7 +297,7 @@ namespace MyClass5
             Console.WriteLine();
             // } 현재 보드의 상태를 플레이 시점으로 보여준다.
 
-            if(isPlayerwin)
+            if (isPlayerwin)
             {
                 Console.WriteLine("[플레이어] 지뢰를 모두 찾고 승리했습니다.");
             }
