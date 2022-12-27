@@ -1,0 +1,15 @@
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\bin\Debug\net6.0\RyuClass6.exe
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\bin\Debug\net6.0\RyuClass6.deps.json
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\bin\Debug\net6.0\RyuClass6.runtimeconfig.json
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\bin\Debug\net6.0\RyuClass6.dll
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\bin\Debug\net6.0\RyuClass6.pdb
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.csproj.AssemblyReference.cache
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.AssemblyInfoInputs.cache
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.AssemblyInfo.cs
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.csproj.CoreCompileInputs.cache
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.dll
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\refint\RyuClass6.dll
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.pdb
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.genruntimeconfig.cache
+C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\ref\RyuClass6.dll
