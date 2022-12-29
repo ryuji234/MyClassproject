@@ -49,7 +49,7 @@ namespace MyClass5
             {
                 for (int x = 0; x < BOARD_SIZE_X; x++)
                 {
-                    gameBoard[y, x] = randomMine.Next(1, 100);
+                    gameBoard[y, x] = randomMine.Next(1, 101);
                     playBoard[y, x] = -1;
                     if (gameBoard[y, x] < MINE_PERCETAGE)
                     {

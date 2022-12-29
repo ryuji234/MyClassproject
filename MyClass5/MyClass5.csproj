@@ -8,8 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="Homework1.cs" />
+    <Compile Remove="Mine.cs" />
     <Compile Remove="Minegame.cs" />
-    <Compile Remove="Program.cs" />
     <Compile Remove="TicTacTOe.cs" />
   </ItemGroup>
 

@@ -120,6 +120,7 @@ namespace RyuClass7
             int randomNumber = random.Next(1, 100 + 1);
 
             TrumpCard TrumpCard = new TrumpCard();
+            //TrumpCard.RollCard();
             TrumpCard.SetupTrumpCards();
             TrumpCard.UserBetting();
 

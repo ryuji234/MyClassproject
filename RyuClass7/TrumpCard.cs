@@ -8,10 +8,13 @@ namespace RyuClass7
 {
     internal class TrumpCard
     {
-        private int[] trumpCardSet;
-        private string[] trumpCardMark;
+        private int[] trumpCardSet;         // 내가 사용할 카드 세트뭉치
+        private string[] trumpCardMark;     // 트럼프 카드의 마크
         
-
+        public TrumpCard()
+        {
+            SetupTrumpCards();
+        }
         public void SetupTrumpCards()
         {
             trumpCardSet = new int[52];
@@ -228,7 +231,7 @@ namespace RyuClass7
             }
         }       // PrintCardSet()
 
-        public int[] shuffleonce(int[] intArray)
+        public int[] shuffleonce(int[] intArray)  // 굉장히 무거운 함수
         {
             Random random = new Random();
             int sourIndex = random.Next(0, intArray.Length);
