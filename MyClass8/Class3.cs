@@ -59,7 +59,7 @@ namespace MyClass8
             
             if(hp>0)
             {
-                Console.Write("현재 남은 HP:{0}\n", hp);
+                Console.Write("현재 남은 HP:{0}", hp);
                 for (int i = (hp / 10) + 1; i > 0; i--)
                 {
                     Console.Write("■");
@@ -68,7 +68,7 @@ namespace MyClass8
             else 
             { 
                 hp = 0;
-                Console.Write("{0}의 현재 남은 HP:{0}\n",name, hp);
+                Console.Write("{0}의 현재 남은 HP:{1}\n",name, hp);
             }
 
         }           // 플레이어의 공격 회피
@@ -166,7 +166,11 @@ namespace MyClass8
         public int monsterhit;
         public string monsteritem;
 
-
+        public string Name
+        {
+            get { return this.monstername; }
+            protected set { this.monstername = value; }
+        }
 
         public void MosternormalAttack(string name, int damage, ref int attack, int Dex, ref int hit)
         {
@@ -204,7 +208,7 @@ namespace MyClass8
             }
             if (hp > 0)
             {
-                Console.Write("{0}의 현재 남은 HP:{1}\n", name, hp);
+                Console.Write("{0}의 현재 남은 HP:{1}", name, hp);
                 for (int i = (hp / 10) + 1; i > 0; i--)
                 {
                     Console.Write("■");
@@ -224,11 +228,11 @@ namespace MyClass8
             int x = rand.Next(1,101);
             if( x>80)
             {
-                MosterHeavyAttack(monstername, monsterdamage, ref monsterattack, monsterDex, ref monsterhit);
+                MosterHeavyAttack(Name, monsterdamage, ref monsterattack, monsterDex, ref monsterhit);
             }
             else
             {
-                MosternormalAttack(monstername, monsterdamage, ref monsterattack, monsterDex, ref monsterhit);
+                MosternormalAttack(Name, monsterdamage, ref monsterattack, monsterDex, ref monsterhit);
             }
                        
                       
@@ -236,7 +240,7 @@ namespace MyClass8
         }
         public void Monsterdefend(Player pla)
         {
-            MosterDodge(monstername, monsterDex, monsterdefence, pla, ref monsterhp);
+            MosterDodge(Name, monsterDex, monsterdefence, pla, ref monsterhp);
         }
 
 
@@ -244,6 +248,7 @@ namespace MyClass8
     }
     class Type1 : Monster
     {
+        
         public Type1()
         {
             this.monstername = "뜨아거";
@@ -256,11 +261,13 @@ namespace MyClass8
             this.monsteritem = "뜨아거의 불";
             
         }
+        
     }
 
     
     class Type2 : Monster
     {
+        
         public Type2()
         {
             this.monstername = "꾸왁스";
@@ -275,8 +282,10 @@ namespace MyClass8
     }
     class Type3 : Monster
     {
+        
         public Type3()
         {
+
             this.monstername = "나오하";
             this.monsterhp = 30;
             this.monsterdefence = 4;
@@ -290,6 +299,7 @@ namespace MyClass8
 
     class player : Player
     {
+
         public player()
         {
             

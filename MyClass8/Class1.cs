@@ -275,8 +275,5 @@ namespace MyClass8
         //    this.Move(this.name);
         //    this.Attack(this.name, this.damage);
         //}
-
     }
-
-
 }

@@ -44,7 +44,7 @@ namespace MyClass8
                         monster = new Type3();
                         break;
                 }
-                Console.WriteLine("{0}.{1}를 선택하셨습니다.", x, monster.monstername);
+                Console.WriteLine("{0}.{1}를 선택하셨습니다.", x, monster.Name);
 
                 while (player.playerhp > 0 && monster.monsterhp > 0)
                 {
@@ -53,12 +53,13 @@ namespace MyClass8
                     Console.WriteLine();
                     if (monster.monsterhp <= 0)
                     {
-                        Console.WriteLine("축하합니다.{0}를(을) 잡았습니다.", monster.monstername);
+                        Console.WriteLine("축하합니다.{0}를(을) 잡았습니다.", monster.Name);
                         if(random.Next(1,101)>60)
                         {
                             Console.WriteLine("{0}를(을) 얻었습니다.", monster.monsteritem);
                         }
                         Console.WriteLine();
+                        
                         break;
                     }
                     monster.MonsterTurn();

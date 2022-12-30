@@ -27,8 +27,8 @@ w,a,s,d 입력 받아서 빈 곳을 자유롭게 이동하는 프로그램 작�
     {
         public static void Main()
         {
-            const int BOARD_SIZE_X = 5;
-            const int BOARD_SIZE_Y = 5;
+            const int BOARD_SIZE_X = 10;
+            const int BOARD_SIZE_Y = 10;
             int MoveX = 1;
             int MoveY = 1;
             int[,] gameBoard = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
@@ -78,7 +78,7 @@ w,a,s,d 입력 받아서 빈 곳을 자유롭게 이동하는 프로그램 작�
             {
                 Console.WriteLine("어느 방향으로 움직일 것인가요");
                 string Move = Console.ReadLine();
-                
+                Console.Clear();
                 switch (Move)
                 {
                     case "w":
