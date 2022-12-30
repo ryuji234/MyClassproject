@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace RyuClass9
 {
@@ -14,6 +15,7 @@ namespace RyuClass9
         static int MoveX = 1;
         static int MoveY = 1;
         static int[,] gameBoard = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
+        static int Coincount = 0;
         
         
         public static void Map(int[,] Map)
@@ -389,6 +391,7 @@ namespace RyuClass9
 
             //}
             Console.WriteLine("\t현재 점수: {0}", Score);
+            Console.WriteLine("\t현재 남은 코인: {0}", Coincount);
         }
         public static void Main()
         {
@@ -396,7 +399,9 @@ namespace RyuClass9
             bool CoinIsHere = false;
             int CoinX = 0;
             int CoinY = 0;
-            
+            Stopwatch stopwatch= new Stopwatch();
+
+            stopwatch.Start();
             
 
             for (int y = 0; y < BOARD_SIZE_Y; y++)
@@ -439,6 +444,7 @@ namespace RyuClass9
                 }
                 if(CoinIsHere == false)
                 {
+                    gameBoard[MoveX, MoveY] = 1;
                     for(int i=0;i < 3;i++)
                     {
                         Console.Clear();
@@ -451,6 +457,7 @@ namespace RyuClass9
                         else
                         {
                             gameBoard[CoinX, CoinY] = 2;
+                            ++Coincount; 
                         }
                         
                         Map(gameBoard);
@@ -476,6 +483,7 @@ namespace RyuClass9
                             if (gameBoard[MoveX - 1, MoveY] == 2)
                             {
                                 Score++;
+                                --Coincount;
                             }
                             gameBoard[MoveX, MoveY] = 0;
                             gameBoard[--MoveX, MoveY] = 5;
@@ -492,6 +500,7 @@ namespace RyuClass9
                             if (gameBoard[MoveX, MoveY - 1] == 2)
                             {
                                 Score++;
+                                --Coincount;
                             }
                             gameBoard[MoveX, MoveY] = 0;
                             gameBoard[MoveX, --MoveY] = 4;
@@ -507,6 +516,7 @@ namespace RyuClass9
                             if (gameBoard[MoveX + 1, MoveY] == 2)
                             {
                                 Score++;
+                                --Coincount;
                             }
                             gameBoard[MoveX, MoveY] = 0;
                             gameBoard[++MoveX, MoveY] = 6;
@@ -522,6 +532,7 @@ namespace RyuClass9
                             if (gameBoard[MoveX, MoveY + 1] == 2)
                             {
                                 Score++;
+                                --Coincount;
                             }
                             gameBoard[MoveX, MoveY] = 0;
                             gameBoard[MoveX, ++MoveY] = 3;
@@ -534,11 +545,14 @@ namespace RyuClass9
                     default:
                         Console.WriteLine("잘못입력 하셨습니다.");
                         break;
-                }               
+                }
+                Console.Clear();
                 Map(gameBoard);
-                if( Score>29)
+                if( Score>19)
                 {
-                    Console.WriteLine("\n\n\t\t    승리!!!!!    ");
+                    stopwatch.Stop();
+
+                    Console.WriteLine("\n\n\t\t    클리어!!!!!   클리어 까지 걸린 시간:{0}초 ",(stopwatch.ElapsedMilliseconds) /1000);
                     break;
                 }
             }
