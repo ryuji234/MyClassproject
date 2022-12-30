@@ -41,18 +41,15 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
                                 case 1:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX + 2)
-                                    {
+                                    
                                         Console.Write("*".PadRight(2, ' '));
-                                    }
-                                    else
-                                    {
-                                        Console.Write(" ".PadRight(2, ' '));
-                                    }
+                                    
 
                                     break;
                                 case 2:
@@ -64,7 +61,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
                                 default:
@@ -95,7 +94,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
                                 case 2:
@@ -107,7 +108,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
                                 case 3:
@@ -140,7 +143,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
                                 case 2:
@@ -152,7 +157,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
 
                                     break;
@@ -187,20 +194,12 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
-                                case 1:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX)
-                                    {
-                                        Console.Write("*".PadRight(2, ' '));
-                                    }
-                                    else
-                                    {
-                                        Console.Write(" ".PadRight(2, ' '));
-                                    }
-
-                                    break;
+                                                                 
                                 case 2:
                                     if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX)
                                     {
@@ -210,7 +209,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
 
                                     break;
@@ -245,20 +246,12 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     break;
-                                case 1:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX && y <= MoveX + 2)
-                                    {
-                                        Console.Write("*".PadRight(2, ' '));
-                                    }
-                                    else
-                                    {
-                                        Console.Write(" ".PadRight(2, ' '));
-                                    }
-
-                                    break;
+                                
                                 case 2:
                                     if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX && y <= MoveX + 2)
                                     {
@@ -268,7 +261,9 @@ namespace RyuClass9
                                     }
                                     else
                                     {
-                                        Console.Write(" ".PadRight(2, ' '));
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write("■".PadRight(1, ' '));
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
 
                                     break;
