@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace RyuClass9
 {
@@ -16,8 +11,8 @@ namespace RyuClass9
         static int MoveY = 1;
         static int[,] gameBoard = new int[BOARD_SIZE_Y, BOARD_SIZE_X];
         static int Coincount = 0;
-        
-        
+
+
         public static void Map(int[,] Map)
         {
             Console.WriteLine("\t\t  ====================");
@@ -71,10 +66,10 @@ namespace RyuClass9
                                     {
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
-                                    break;                                                                        
+                                    break;
                                 default:
                                     break;
-                            }
+                            }       //switch : 맵 로딩 : 사람이 가운데 있을때
                         }
                         Console.WriteLine();
 
@@ -85,14 +80,14 @@ namespace RyuClass9
                     {
                         Console.Write("\t");
                         for (int x = 0; x < BOARD_SIZE_X; x++)
-                        {                           
-                                switch (Map[y, x])
-                                {
+                        {
+                            switch (Map[y, x])
+                            {
                                 case -1:
                                     Console.Write("□".PadRight(1, ' '));
                                     break;
                                 case 0:
-                                    if (x >= MoveY&& x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX + 2)
+                                    if (x >= MoveY && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("■".PadRight(1, ' '));
@@ -102,9 +97,9 @@ namespace RyuClass9
                                     {
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
-                                    break;                                                                   
+                                    break;
                                 case 2:
-                                    if (x >= MoveY&& x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX + 2)
+                                    if (x >= MoveY && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("$".PadRight(2, ' '));
@@ -114,15 +109,13 @@ namespace RyuClass9
                                     {
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
-
                                     break;
                                 case 3:
-                                    
-                                        Console.Write("▶".PadRight(1, ' '));                                   
-                                    break;                                                                                                                                  
+                                    Console.Write("▶".PadRight(1, ' '));
+                                    break;
                                 default:
                                     break;
-                            }
+                            }   //switch : 맵 로딩 : 사람이 오른쪽 볼때
                         }
                         Console.WriteLine();
                     }
@@ -139,7 +132,7 @@ namespace RyuClass9
                                     Console.Write("□".PadRight(1, ' '));
                                     break;
                                 case 0:
-                                    if (x >= MoveY - 2 && x <= MoveY&& y >= MoveX - 2 && y <= MoveX + 2)
+                                    if (x >= MoveY - 2 && x <= MoveY && y >= MoveX - 2 && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("■".PadRight(1, ' '));
@@ -149,9 +142,9 @@ namespace RyuClass9
                                     {
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
-                                    break;                               
+                                    break;
                                 case 2:
-                                    if (x >= MoveY - 2 && x <= MoveY&& y >= MoveX - 2 && y <= MoveX + 2)
+                                    if (x >= MoveY - 2 && x <= MoveY && y >= MoveX - 2 && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("$".PadRight(2, ' '));
@@ -162,14 +155,14 @@ namespace RyuClass9
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
 
-                                    break;                                                                  
-                                case 4:                                    
-                                        Console.Write("◀".PadRight(1, ' '));
-                                    
-                                    break;                                
+                                    break;
+                                case 4:
+                                    Console.Write("◀".PadRight(1, ' '));
+
+                                    break;
                                 default:
                                     break;
-                            }
+                            }   //switch : 맵 로딩 : 사람이 왼쪽 볼때
                         }
                         Console.WriteLine();
                     }
@@ -186,7 +179,7 @@ namespace RyuClass9
                                     Console.Write("□".PadRight(1, ' '));
                                     break;
                                 case 0:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX -2 && y <= MoveX)
+                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX - 2 && y <= MoveX)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("■".PadRight(1, ' '));
@@ -220,19 +213,19 @@ namespace RyuClass9
                                         Console.Write(" ".PadRight(2, ' '));
                                     }
 
-                                    break;                              
-                                case 5:                                    
-                                        Console.Write("▲".PadRight(1, ' '));
-                                                                     
-                                    break;                                
+                                    break;
+                                case 5:
+                                    Console.Write("▲".PadRight(1, ' '));
+
+                                    break;
                                 default:
                                     break;
-                            }
+                            }       //switch : 맵 로딩 : 사람이 위쪽 볼때
                         }
                         Console.WriteLine();
                     }
                     break;
-                    case 6://▼
+                case 6://▼
                     for (int y = 0; y < BOARD_SIZE_Y; y++)
                     {
                         Console.Write("\t");
@@ -244,7 +237,7 @@ namespace RyuClass9
                                     Console.Write("□".PadRight(1, ' '));
                                     break;
                                 case 0:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX&& y <= MoveX + 2)
+                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("■".PadRight(1, ' '));
@@ -256,7 +249,7 @@ namespace RyuClass9
                                     }
                                     break;
                                 case 1:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX&& y <= MoveX + 2)
+                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX && y <= MoveX + 2)
                                     {
                                         Console.Write("*".PadRight(2, ' '));
                                     }
@@ -267,7 +260,7 @@ namespace RyuClass9
 
                                     break;
                                 case 2:
-                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX&& y <= MoveX + 2)
+                                    if (x >= MoveY - 2 && x <= MoveY + 2 && y >= MoveX && y <= MoveX + 2)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.Write("$".PadRight(2, ' '));
@@ -285,14 +278,14 @@ namespace RyuClass9
                                     break;
                                 default:
                                     break;
-                            }
+                            }    //switch : 맵 로딩 : 사람이 아래쪽 볼때
                         }
                         Console.WriteLine();
                     }
                     break;
 
 
-            }
+            }       // 플레이어 위치, 플레이어 보는 방향
 
             //for (int y = 0; y < BOARD_SIZE_Y; y++)
             //{
@@ -392,17 +385,17 @@ namespace RyuClass9
             //}
             Console.WriteLine("\t현재 점수: {0}", Score);
             Console.WriteLine("\t현재 남은 코인: {0}", Coincount);
-        }
+        }       // 맵 로딩 함수
         public static void Main()
         {
-            Random random= new Random();
+            Random random = new Random();
             bool CoinIsHere = false;
             int CoinX = 0;
             int CoinY = 0;
-            Stopwatch stopwatch= new Stopwatch();
+            Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
-            
+
 
             for (int y = 0; y < BOARD_SIZE_Y; y++)
             {
@@ -419,10 +412,10 @@ namespace RyuClass9
                     }
 
                 }
-            }
-            gameBoard[MoveX, MoveY] = 1;
-            
-            Map(gameBoard);
+            }       // 맵 제작
+            gameBoard[MoveX, MoveY] = 1;    //플레이어 배치
+
+            Map(gameBoard);     //맵 로딩
 
             while (true)
             {
@@ -430,49 +423,49 @@ namespace RyuClass9
                 {
                     for (int x = 0; x < BOARD_SIZE_X; x++)
                     {
-                        if(gameBoard[x, y] == 2 )
+                        if (gameBoard[x, y] == 2)
                         {
                             CoinIsHere = true;
                             break;
                         }
                         else { CoinIsHere = false; }
                     }
-                    if(CoinIsHere == true)
+                    if (CoinIsHere == true)
                     {
                         break;
                     }
-                }
-                if(CoinIsHere == false)
+                }       // 남은 코인 검사
+                if (CoinIsHere == false)
                 {
                     gameBoard[MoveX, MoveY] = 1;
-                    for(int i=0;i < 3;i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         Console.Clear();
                         CoinX = random.Next(1, BOARD_SIZE_X - 1);
                         CoinY = random.Next(1, BOARD_SIZE_Y - 1);
-                        if( CoinX == MoveX && CoinY == MoveY)
+                        if (CoinX == MoveX && CoinY == MoveY)
                         {
                             ++Score;
                         }
                         else
                         {
                             gameBoard[CoinX, CoinY] = 2;
-                            ++Coincount; 
+                            ++Coincount;
                         }
-                        
+
                         Map(gameBoard);
                         Console.WriteLine("\t코인 생성중...");
                         Task.Delay(300).Wait();
-                    }
-                }
+                    }       // 코인 생성
+                }       // if 코인이 없다면
                 Console.Clear();
                 Map(gameBoard);
                 Console.Write("\t");
-                Console.Write("어느 방향으로 움직일 것인가요(w,a,s,d로 움직임)");
+                Console.Write("어느 방향으로 움직일 것인가요(w,a,s,d로 움직임)");        
 
 
 
-                ConsoleKeyInfo kr = Console.ReadKey();
+                ConsoleKeyInfo kr = Console.ReadKey();                          // 움직임 입력
                 char Move = kr.KeyChar;
 
                 switch (Move)
@@ -545,16 +538,16 @@ namespace RyuClass9
                     default:
                         Console.WriteLine("잘못입력 하셨습니다.");
                         break;
-                }
+                }                       // 플레이어 움직임
                 Console.Clear();
                 Map(gameBoard);
-                if( Score>19)
+                if (Score > 19)
                 {
                     stopwatch.Stop();
 
-                    Console.WriteLine("\n\n\t\t    클리어!!!!!   클리어 까지 걸린 시간:{0}초 ",(stopwatch.ElapsedMilliseconds) /1000);
+                    Console.WriteLine("\n\n\t\t    클리어!!!!!   클리어 까지 걸린 시간:{0}초 ", (stopwatch.ElapsedMilliseconds) / 1000);
                     break;
-                }
+                }                       // 코인인 20개 먹은 경우
             }
         }
     }
