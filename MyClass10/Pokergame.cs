@@ -452,9 +452,14 @@ namespace MyClass10
             {
                 cardmarks[b++] = ch;
             }
+
+            //cardnumbers = new int[] {1,10,11,12,13};            //<-------------------------카드 테스트
             
-            
-            
+            //cardmarks = new string[] {"♥","♥","♥","♥","♥"};
+            //for(int i = 0; i < 5;i++)
+            //{
+            //    Console.WriteLine("[{0}{1}]",cardnumbers[i], cardmarks[i]);     //<--------카드 출력
+            //}
             for (int i= 0;i<4;i++)
             {
                 if (cardnumbers[i] == cardnumbers[i+1]) // 같은 숫자
@@ -470,9 +475,9 @@ namespace MyClass10
                 {
                     if(Numcount <=2)
                     {
-                        Numcount = 3;
+                        Numcount = 3;   // 그냥 트리플
                     }
-                    else { Numcount += 3; }
+                    else { Numcount += 3; }     // 포카드 6 점수:8
                 }
             }
 
@@ -481,17 +486,59 @@ namespace MyClass10
                 cardnumbers[2] + 1 == cardnumbers[3] &&
                 cardnumbers[3] + 1 == cardnumbers[4] )
             {
+                if (cardnumbers[0] == 1)
+                {
+                    Numcount = 5;   // 백 스트레이트
+                }
+                else if(cardmarks[0] == cardmarks[1] &&
+                        cardmarks[1] == cardmarks[2] &&
+                        cardmarks[2] == cardmarks[3] &&
+                        cardmarks[3] == cardmarks[4])
+                {
+                    Numcount = 9;       //스티플
+                }
+                else
+                {
+                    Numcount = 4;   // 스트레이트
+                }
                 
-                Numcount = 4;   
+            }
+            if(cardnumbers[0] == 1 && 
+               cardnumbers[1] == 10 &&
+               cardnumbers[2] == 11 &&
+               cardnumbers[3] == 12 &&
+               cardnumbers[4] == 13)
+            {
+                if(cardmarks[0] == cardmarks[1] &&
+                   cardmarks[1] == cardmarks[2] &&
+                   cardmarks[2] == cardmarks[3] &&
+                   cardmarks[3] == cardmarks[4])
+                {
+                    Numcount = 10;      //로티플
+                }
+                else
+                {
+                    Numcount = 7; // 마운틴 점수: 6
+                }
+                
             }
             if (cardmarks[0] == cardmarks[1] &&
-                cardmarks[0] == cardmarks[2] &&
-                cardmarks[0] == cardmarks[3] &&
-                cardmarks[0] == cardmarks[4] )
+                cardmarks[1] == cardmarks[2] &&
+                cardmarks[2] == cardmarks[3] &&
+                cardmarks[3] == cardmarks[4] )
             {
+                if( Numcount > 8)
+                {
+
+                }
+                else
+                {
+                    Numcount = 8;      // 플러쉬  점수:7
+                }
                 
-                Numcount = 5;
             }
+            
+
             switch (Numcount)
             {
                 case 0:
@@ -510,10 +557,25 @@ namespace MyClass10
                     Console.WriteLine("스트레이트");
                     break;
                 case 5:
-                    Console.WriteLine("플러쉬");
+                    Console.WriteLine("백 스트레이트");
                     break;
                 case 6:
                     Console.WriteLine("포카드");
+                    Numcount = 8;
+                    break;
+                case 7:
+                    Console.WriteLine("마운틴");
+                    Numcount = 6;
+                    break;
+                case 8:
+                    Console.WriteLine("플러쉬");
+                    Numcount = 7;
+                    break;
+                case 9:
+                    Console.WriteLine("스티플");              
+                    break;
+                case 10:
+                    Console.WriteLine("로티플");
                     break;
                 default:
                     break;
@@ -605,24 +667,49 @@ namespace MyClass10
                 Console.Write(" -------  ");
             }
             Console.WriteLine();           // 카드 모양 만들기 
-            List<int> numbers = new List<int>();
-            List<string> marks = new List<string>();
-            for (int i = 0; i < 7; i++)
+
+            //List<int> numbers = new List<int>();
+            //List<string> marks = new List<string>();
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    numbers.Add(cardnumber[i]);
+            //    marks.Add(cardmarks[i]);
+            //}
+            //numbers.Sort();
+            //marks.Sort();
+            int temp = 0;
+            string temp2 = null;
+            for(int i=0;i<cardnumber.Length-1;i++)
             {
-                numbers.Add(cardnumber[i]);
-                marks.Add(cardmarks[i]);
+                for(int j=0;j<cardnumber.Length-1-i;j++)
+                {
+                    if (cardnumber[j] > cardnumber[j+1])
+                    {
+                        temp = cardnumber[j];
+                        cardnumber[j] = cardnumber[j + 1];
+                        cardnumber[j + 1] = temp;
+                        temp2 = cardmarks[j];
+                        cardmarks[j] = cardmarks[j + 1];
+                        cardmarks[j + 1] = temp2;
+                    }
+                }
             }
-            numbers.Sort();
-            marks.Sort();
-            int a = 0; int b = 0;
-            foreach (int num in numbers)
-            {
-                cardnumber[a++] = num;
-            }
-            foreach (string ch in marks)
-            {
-                cardmarks[b++] = ch;
-            }
+            //cardnumber = new int[] {2,2,10,10,12,12,12};            //<-------------------------카드 체크 테스트
+            //cardmarks = new string[] {"♥", "♥", "♥", "♥", "♠", "♠", "♠" };
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    Console.Write("[{0}", cardnumber[i]);
+            //    Console.Write("{0}]", cardmarks[i]);            //<--------------------------정렬된 카드 출력
+            //}
+            //int a = 0; int b = 0;
+            //foreach (int num in numbers)
+            //{
+            //    cardnumber[a++] = num;
+            //}
+            //foreach (string ch in marks)
+            //{
+            //    cardmarks[b++] = ch;
+            //}
             for (int i = 0; i < 6; i++)
             {
                 if (cardnumber[i] == cardnumber[i + 1]) // 같은 숫자
@@ -639,37 +726,141 @@ namespace MyClass10
                     
                 }
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (cardnumber[i] == cardnumber[i + 1] &&
                     cardnumber[i + 1] == cardnumber[i + 2])
                 {
-                    if (Numcount <= 2)
+                    
+                    if (cardnumber[i] == cardnumber[i + 3]) 
+                    { Numcount = 6; break; }     // 6 포카드  점수: 8
+                    else { Numcount = 3; }
+                }
+            }
+            if (cardnumber[4] == cardnumber[5] &&
+                    cardnumber[5] == cardnumber[6])
+            {
+                Numcount = 3;
+            }
+                //int[] distArray = cardnumber.Distinct().ToArray();
+                List<int> card = new List<int>();
+            List<string> marks = new List<string>();
+            for(int i = 0; i < 6; i++)
+            {
+                if (cardnumber[i] == cardnumber[i+1])
+                {
+
+                }
+                else
+                {
+                    card.Add(cardnumber[i]);
+                    marks.Add(cardmarks[i]);
+                }
+            }
+            if (cardnumber[5] != cardnumber[6])
+            {
+                
+                card.Add(cardnumber[6]);
+                marks.Add(cardmarks[6]);
+            }
+            else
+            {
+                card.Add(cardnumber[5]);
+                marks.Add(cardmarks[5]);
+            }
+            Console.WriteLine();
+            //for (int i = 0; i < card.Count; i++)
+            //{     
+            //    Console.Write("[{0}", card[i]);
+            //    Console.Write("{0}]", marks[i]);        //<--------------------------정렬된 카드 출력
+            //}
+            List<string> marks2= new List<string>();
+            for (int i = 0; i < 7; i++)
+            {
+                marks2.Add(cardmarks[i]);
+            }
+            marks2.Sort();
+            int b = 0;
+            foreach (string ch in marks2)
+            {
+                cardmarks[b++] = ch;
+            }
+
+            if (card.Count > 4 )
+            {
+                
+                for (int i = 0; i < card.Count - 4; i++)
+                {
+                    
+                    if (card[i] + 1 == card[i+1] &&
+                        card[i+1] + 1 == card[i+2] &&
+                        card[i+2] + 1 == card[i+3] &&
+                        card[i+3] + 1 == card[i+4])
                     {
-                        Numcount = 3;
+                        if (card[i] == 1)
+                        {
+                            Numcount = 5;       // 백 스트레이트
+                            
+                        }
+                        if (marks[i] == marks[i + 1] &&
+                                 marks[i + 1] == marks[i + 2] &&
+                                 marks[i + 2] == marks[i + 3] &&
+                                 marks[i + 3] == marks[i + 4])
+                        {
+                            
+                            Numcount = 9;       //스티플
+                            break;
+                        }
+                        else
+                        {
+                           
+                            Numcount = 4;       // 스트레이트  
+                            break;
+                        }
+                        
                     }
-                    else { Numcount += 3; }
+                    
+                }
+                if (card[0] == 1 &&
+                    card[card.Count - 4] == 10 &&
+                    card[card.Count - 3] == 11 &&
+                    card[card.Count - 2] == 12 &&
+                    card[card.Count - 1] == 13)
+                {
+                    if (marks[0] == marks[card.Count - 1] &&
+                        marks[card.Count - 1] == marks[card.Count - 2] &&
+                        marks[card.Count - 2] == marks[card.Count - 3] &&
+                        marks[card.Count - 3] == marks[card.Count - 4])
+                    {
+                        Numcount = 10;      //로티플
+                    }
+                    else
+                    {
+                        Numcount = 7; // 마운틴 점수: 6
+                    }
+                    
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    if (cardmarks[i] == cardmarks[i + 1] &&
+                        cardmarks[i + 1] == cardmarks[i + 2] &&
+                        cardmarks[i + 2] == cardmarks[i + 3] &&
+                        cardmarks[i + 3] == cardmarks[i + 4])
+                    {
+                        if (Numcount > 8)
+                        {
+
+                        }
+                        else
+                        {
+                            Numcount = 8;      // 플러쉬  점수:7
+                        }
+                    }
                 }
             }
-            for(int i =0;i<3;i++)
+            else
             {
-                if (cardnumber[0] + 1 == cardnumber[1] &&
-                cardnumber[1] + 1 == cardnumber[2] &&
-                cardnumber[2] + 1 == cardnumber[3] &&
-                cardnumber[3] + 1 == cardnumber[4])
-                {
-                    Numcount = 4;
-                }
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                if (cardmarks[0] == cardmarks[1] &&
-                cardmarks[0] == cardmarks[2] &&
-                cardmarks[0] == cardmarks[3] &&
-                cardmarks[0] == cardmarks[4])
-                {
-                    Numcount = 5;
-                }
+
             }
                 
             switch (Numcount)
@@ -690,10 +881,25 @@ namespace MyClass10
                     Console.WriteLine("스트레이트");
                     break;
                 case 5:
-                    Console.WriteLine("플러쉬");
+                    Console.WriteLine("백 스트레이트");
                     break;
                 case 6:
                     Console.WriteLine("포카드");
+                    Numcount = 8;
+                    break;
+                case 7:
+                    Console.WriteLine("마운틴");
+                    Numcount = 6;
+                    break;
+                case 8:
+                    Console.WriteLine("플러쉬");
+                    Numcount = 7;
+                    break;
+                case 9:
+                    Console.WriteLine("스티플");
+                    break;
+                case 10:
+                    Console.WriteLine("로티플");
                     break;
                 default:
                     break;
@@ -705,7 +911,8 @@ namespace MyClass10
         {
             SetupTrumpCards();
             int playerPoint = 10000;
-            while(playerPoint > 0 && playerPoint < 100000) 
+            bool GameOver = true;
+            while(GameOver) 
             {
                 shufflecard();
                 ComputerCardshow(ComputerCardSet());
@@ -740,12 +947,28 @@ namespace MyClass10
                         playerPoint -= userbatting;
                         Console.WriteLine("플레이어의 포인트: {0}", playerPoint);
                     }
-                    Task.Delay(5000).Wait();
-                    Console.Clear();
+                    
                 }
                 else
                 {
                     Console.WriteLine("잘못 입력 하셨습니다.");
+                }
+                
+                if(playerPoint <= 0)
+                {
+                    Console.WriteLine("\n당신은 모든 포인트를 잃으셨습니다.");
+                    GameOver = false;
+                }
+                else if (playerPoint >= 100000)
+                {
+                    Console.WriteLine("\n축하 합니다 당신은 목표한 포인트를 얻으셨습니다.");
+                    GameOver = false;
+                }
+                else if(playerPoint > 0 && playerPoint < 100000)
+                {
+                    Console.WriteLine("10초 후 다음 게임으로 진행됩니다.");
+                    Task.Delay(10000).Wait();
+                    Console.Clear();
                 }
                 
                 
