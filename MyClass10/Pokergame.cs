@@ -454,17 +454,31 @@ namespace MyClass10
             }
 
             //cardnumbers = new int[] {1,10,11,12,13};            //<-------------------------카드 테스트
-            
+
             //cardmarks = new string[] {"♥","♥","♥","♥","♥"};
             //for(int i = 0; i < 5;i++)
             //{
             //    Console.WriteLine("[{0}{1}]",cardnumbers[i], cardmarks[i]);     //<--------카드 출력
             //}
+            int TopCard = 0;
+            int fullhouse = 0;
             for (int i= 0;i<4;i++)
             {
                 if (cardnumbers[i] == cardnumbers[i+1]) // 같은 숫자
                 {
+                    fullhouse++;
                     Numcount++;         // Numcount가 1이면 원페어, 2면 투페어
+                    if (cardnumbers[i] == 1)
+                    {
+                        TopCard = 14;
+                    }
+                    else if (TopCard > cardnumbers[i + 1])
+                    {
+                    }
+                    else
+                    {
+                        TopCard = cardnumbers[i + 1];
+                    }
                     ++i;
                 }                            
             }
@@ -473,11 +487,40 @@ namespace MyClass10
                 if (cardnumbers[i] == cardnumbers[i+1]&&
                     cardnumbers[i+1]  == cardnumbers[i+2])
                 {
-                    if(Numcount <=2)
+                    if(Numcount <2)
                     {
+                        
                         Numcount = 3;   // 그냥 트리플
+                        if (cardnumbers[i] == 1)
+                        {
+                            TopCard = 14;
+                        }
+                        else 
+                        {
+                            TopCard = cardnumbers[i + 2];
+                        }
                     }
-                    else { Numcount += 3; }     // 포카드 6 점수:8
+                    else 
+                    {
+                        if (fullhouse>=2)
+                        {
+                            Numcount = 11;
+                        }
+                        else
+                        {
+                            Numcount += 3;
+                            if (cardnumbers[i] == 1)
+                            {
+                                TopCard = 14;
+                            }
+                            else
+                            {
+                                TopCard = cardnumbers[i + 2];
+                            }
+
+                        }
+                           
+                    }     // 포카드 6 점수:8
                 }
             }
 
@@ -489,6 +532,7 @@ namespace MyClass10
                 if (cardnumbers[0] == 1)
                 {
                     Numcount = 5;   // 백 스트레이트
+                    TopCard = cardnumbers[4];
                 }
                 else if(cardmarks[0] == cardmarks[1] &&
                         cardmarks[1] == cardmarks[2] &&
@@ -496,10 +540,12 @@ namespace MyClass10
                         cardmarks[3] == cardmarks[4])
                 {
                     Numcount = 9;       //스티플
+                    TopCard = cardnumbers[4];
                 }
                 else
                 {
                     Numcount = 4;   // 스트레이트
+                    TopCard = cardnumbers[4];
                 }
                 
             }
@@ -515,10 +561,12 @@ namespace MyClass10
                    cardmarks[3] == cardmarks[4])
                 {
                     Numcount = 10;      //로티플
+                    TopCard = cardnumbers[4];
                 }
                 else
                 {
                     Numcount = 7; // 마운틴 점수: 6
+                    TopCard = cardnumbers[4];
                 }
                 
             }
@@ -534,6 +582,7 @@ namespace MyClass10
                 else
                 {
                     Numcount = 8;      // 플러쉬  점수:7
+                    TopCard = cardnumbers[4];
                 }
                 
             }
@@ -545,37 +594,48 @@ namespace MyClass10
                     Console.WriteLine("노페어");
                     break;
                 case 1:
-                    Console.WriteLine("원페어");
+                    Console.WriteLine("{0}원페어", TopCard);
+                    Numcount = 1 * 13 + TopCard;
                     break;
                 case 2:
                     Console.WriteLine("투페어");
+                    Numcount = 2 * 13 + TopCard;
                     break;
                 case 3:
                     Console.WriteLine("트리플");
+                    Numcount = 3 * 13 + TopCard;
                     break;
                 case 4:
                     Console.WriteLine("스트레이트");
+                    Numcount = 4 * 13 + TopCard;
                     break;
                 case 5:
                     Console.WriteLine("백 스트레이트");
+                    Numcount = 5 * 13;
                     break;
                 case 6:
                     Console.WriteLine("포카드");
-                    Numcount = 8;
+                    Numcount = 9 * 13 + TopCard;
                     break;
                 case 7:
                     Console.WriteLine("마운틴");
-                    Numcount = 6;
+                    Numcount = 6 * 13;
                     break;
                 case 8:
                     Console.WriteLine("플러쉬");
-                    Numcount = 7;
+                    Numcount = 7 * 13;
                     break;
                 case 9:
-                    Console.WriteLine("스티플");              
+                    Console.WriteLine("스티플");
+                    Numcount = 10 * 13;
                     break;
                 case 10:
                     Console.WriteLine("로티플");
+                    Numcount = 11 * 13;
+                    break;
+                case 11:
+                    Console.WriteLine("풀하우스");
+                    Numcount = 8 * 13;
                     break;
                 default:
                     break;
@@ -710,6 +770,8 @@ namespace MyClass10
             //{
             //    cardmarks[b++] = ch;
             //}
+            int Fullhouse = 0;
+            int TopCard = 0;
             for (int i = 0; i < 6; i++)
             {
                 if (cardnumber[i] == cardnumber[i + 1]) // 같은 숫자
@@ -720,7 +782,19 @@ namespace MyClass10
                     }
                     else
                     {
+                        Fullhouse++;
                         Numcount++;         // Numcount가 1이면 원페어, 2면 투페어
+                        if (cardnumber[i] == 1)
+                        {
+                            TopCard = 14;
+                        }
+                        else if (TopCard > cardnumber[i + 1])
+                        {
+                        }
+                        else
+                        {
+                            TopCard = cardnumber[i + 1];
+                        }
                         ++i;
                     }
                     
@@ -733,14 +807,53 @@ namespace MyClass10
                 {
                     
                     if (cardnumber[i] == cardnumber[i + 3]) 
-                    { Numcount = 6; break; }     // 6 포카드  점수: 8
-                    else { Numcount = 3; }
+                    { 
+                        Numcount = 6; 
+                        if (cardnumber[i] == 1)
+                        {
+                            TopCard = 14;
+                        }
+                        else
+                        {
+                            TopCard = cardnumber[i + 3];
+                        }
+                        
+                        break; 
+                    }     // 6 포카드  점수: 8
+                    else 
+                    { 
+                        if(Fullhouse >=2)
+                        {
+                            Numcount = 11;          //풀하우스
+                        }
+                        else
+                        {
+                            Numcount = 3;
+                            if (cardnumber[i] == 1)
+                            {
+                                TopCard = 14;
+                            }
+                            else
+                            {
+                                TopCard = cardnumber[i + 3];        //트리플
+                            }
+                        }
+                        
+                    }
                 }
             }
             if (cardnumber[4] == cardnumber[5] &&
                     cardnumber[5] == cardnumber[6])
             {
                 Numcount = 3;
+                if (cardnumber[4] == 1)
+                {
+                    TopCard = 14;
+                }
+                else
+                {
+                    TopCard = cardnumber[6];
+                }
             }
                 //int[] distArray = cardnumber.Distinct().ToArray();
                 List<int> card = new List<int>();
@@ -800,7 +913,7 @@ namespace MyClass10
                         if (card[i] == 1)
                         {
                             Numcount = 5;       // 백 스트레이트
-                            
+                            TopCard = card[i + 4];
                         }
                         if (marks[i] == marks[i + 1] &&
                                  marks[i + 1] == marks[i + 2] &&
@@ -809,12 +922,14 @@ namespace MyClass10
                         {
                             
                             Numcount = 9;       //스티플
+                            TopCard = card[i + 4];
                             break;
                         }
                         else
                         {
                            
                             Numcount = 4;       // 스트레이트  
+                            TopCard = card[i + 4];
                             break;
                         }
                         
@@ -837,8 +952,9 @@ namespace MyClass10
                     else
                     {
                         Numcount = 7; // 마운틴 점수: 6
+
                     }
-                    
+
                 }
                 for (int i = 0; i < 3; i++)
                 {
@@ -869,37 +985,48 @@ namespace MyClass10
                     Console.WriteLine("노페어");
                     break;
                 case 1:
-                    Console.WriteLine("원페어");
+                    Console.WriteLine("{0}원페어", TopCard);
+                    Numcount = 1 * 15 + TopCard;
                     break;
                 case 2:
                     Console.WriteLine("투페어");
+                    Numcount = 2 * 15 + TopCard;
                     break;
                 case 3:
                     Console.WriteLine("트리플");
+                    Numcount = 3 * 15 + TopCard;
                     break;
                 case 4:
                     Console.WriteLine("스트레이트");
+                    Numcount = 4 * 15 + TopCard;
                     break;
                 case 5:
                     Console.WriteLine("백 스트레이트");
+                    Numcount = 5 * 15;
                     break;
                 case 6:
                     Console.WriteLine("포카드");
-                    Numcount = 8;
+                    Numcount = 9 * 15 + TopCard;
                     break;
                 case 7:
                     Console.WriteLine("마운틴");
-                    Numcount = 6;
+                    Numcount = 6 * 15;
                     break;
                 case 8:
                     Console.WriteLine("플러쉬");
-                    Numcount = 7;
+                    Numcount = 7 * 15;
                     break;
                 case 9:
                     Console.WriteLine("스티플");
+                    Numcount = 10 * 15;
                     break;
                 case 10:
                     Console.WriteLine("로티플");
+                    Numcount = 11 * 15;
+                    break;
+                case 11:
+                    Console.WriteLine("풀하우스");
+                    Numcount = 8 * 15;
                     break;
                 default:
                     break;
@@ -921,6 +1048,10 @@ namespace MyClass10
                 Console.Write("(플레이어의 포인트: {0}): ", playerPoint);
                 int userbatting = int.Parse(Console.ReadLine());
                 int computer = ComputerRoll(ComputerCardplus());
+                if(computer%13 ==1)
+                {
+                    computer += 13;
+                }
                 int user = 0;
                 if (userbatting >= 0 &&userbatting <= playerPoint)
                 {
@@ -929,7 +1060,10 @@ namespace MyClass10
 
                     user = UserCardRoll(UserChange(UserChange(UserCardSet(),1),2));
 
-
+                    if (user % 13 == 1)
+                    {
+                        user += 13;
+                    }
                     if (user == computer) 
                     { 
                         Console.WriteLine("비겼습니다.\n");
@@ -966,9 +1100,14 @@ namespace MyClass10
                 }
                 else if(playerPoint > 0 && playerPoint < 100000)
                 {
-                    Console.WriteLine("10초 후 다음 게임으로 진행됩니다.");
-                    Task.Delay(10000).Wait();
-                    Console.Clear();
+                    Console.Write("5초 후 다음 게임으로 진행됩니다.....");
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.Write("{0}.", i);
+                        Task.Delay(1000).Wait();
+                    }
+                        Console.Clear();
                 }
                 
                 

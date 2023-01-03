@@ -11,7 +11,7 @@
  - 시작 포인트 10000포인트
  - 노페어, 원페어, 투페어, 트리플, 포카드, 플러쉬, 스트레이트(기본형)
  - 시간이 남으면 마운틴 , 백 스트레이트, 스티플, 로티플(어려움)
- 로티플 > 스티플 > 포카드 > 플러쉬 > 마운틴 > 백 스트레이트 > 스트레이트 > 트리플 > 투페어 > 원페어 > 노페어
+ 로티플 > 스티플 > 포카드 > 풀하우스 > 플러쉬 > 마운틴 > 백 스트레이트 > 스트레이트 > 트리플 > 투페어 > 원페어 > 노페어
 
 
 
@@ -19,59 +19,3 @@
  마운틴: 10,J,Q,K,A
  스티플: 같은 문양 + 숫자 연달아
  로티플: 같은 문양 + 10,J,Q,K,A
- if (cardnumbers[0] + 1 == cardnumbers[1] &&
-                cardnumbers[1] + 1 == cardnumbers[2] &&
-                cardnumbers[2] + 1 == cardnumbers[3] &&
-                cardnumbers[3] + 1 == cardnumbers[4] )
-            {
-                if (cardnumbers[0] == 1)
-                {
-                    Numcount = 5;   // 백 스트레이트
-                }
-                else if(cardmarks[0] == cardmarks[1] &&
-                        cardmarks[1] == cardmarks[2] &&
-                        cardmarks[2] == cardmarks[3] &&
-                        cardmarks[3] == cardmarks[4])
-                {
-                    Numcount = 9;       //스티플
-                }
-                else
-                {
-                    Numcount = 4;   // 스트레이트
-                }
-                
-            }
-            if(cardnumbers[0] == 1 && 
-               cardnumbers[1] == 10 &&
-               cardnumbers[2] == 11 &&
-               cardnumbers[3] == 12 &&
-               cardnumbers[4] == 13)
-            {
-                if(cardmarks[0] == cardmarks[1] &&
-                   cardmarks[1] == cardmarks[2] &&
-                   cardmarks[2] == cardmarks[3] &&
-                   cardmarks[3] == cardmarks[4])
-                {
-                    Numcount = 10;      //로티플
-                }
-                else
-                {
-                    Numcount = 7; // 마운틴 점수: 6
-                }
-                
-            }
-            if (cardmarks[0] == cardmarks[1] &&
-                cardmarks[1] == cardmarks[2] &&
-                cardmarks[2] == cardmarks[3] &&
-                cardmarks[3] == cardmarks[4] )
-            {
-                if( Numcount > 8)
-                {
-
-                }
-                else
-                {
-                    Numcount = 8;      // 플러쉬  점수:7
-                }
-                
-            }
