@@ -13,3 +13,11 @@ C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\refint\RyuClass6
 C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.pdb
 C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\RyuClass6.genruntimeconfig.cache
 C:\Kimdeahun\work\ProgramingLearning\RyuClass6\obj\Debug\net6.0\ref\RyuClass6.dll
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.csproj.AssemblyReference.cache
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.GeneratedMSBuildEditorConfig.editorconfig
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.AssemblyInfoInputs.cache
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.AssemblyInfo.cs
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.csproj.CoreCompileInputs.cache
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.dll
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\refint\RyuClass6.dll
+C:\RyuJiHwan\main\RyuClass6\obj\Debug\net6.0\RyuClass6.pdb
